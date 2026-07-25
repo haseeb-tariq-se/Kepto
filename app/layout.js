@@ -1,8 +1,27 @@
 import './globals.css';
 
+const title = 'Kepto — your digital second brain';
+const description = 'Save anything — a link, a thought, an image, a voice memo. Kepto reads it, remembers it, and hands it back when you describe it in plain words.';
+
 export const metadata = {
-  title: 'Kepto — your digital second brain',
-  description: 'Save anything. Ask for it back in plain language.',
+  title,
+  description,
+  icons: { icon: '/favicon.svg' },
+  openGraph: {
+    title,
+    description,
+    type: 'website',
+    siteName: 'Kepto',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title,
+    description,
+  },
+};
+
+export const viewport = {
+  themeColor: '#07070a',
 };
 
 export default function RootLayout({ children }) {

@@ -11,6 +11,7 @@ export async function POST(req) {
     if (!user) return NextResponse.json({ error: 'Please sign in to search.' }, { status: 401 });
     const { query } = await req.json();
     if (!query || !query.trim()) return NextResponse.json({ items: [] });
+    if (query.length > 500) return NextResponse.json({ error: 'Query too long.' }, { status: 400 });
 
     const queryEmbedding = await embed(query, 'search_query');
     const { data, error } = await getSupabase().rpc('match_items', {
